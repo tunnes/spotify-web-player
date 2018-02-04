@@ -3,6 +3,7 @@ import 'jsdom-global/register'
 
 import { expect } from 'chai';
 import renderAlbumTracks from '../src/album-tracks';
+import convertToHumanTime from '../src/convert-to-human-time';
 
 describe("Album tracks", () => {
   const responseData = [
@@ -24,7 +25,7 @@ describe("Album tracks", () => {
     <div class="music" data-track-preview="${responseData[0].preview_url}">
       <p class="music-number">${responseData[0].track_number}</p>
       <p class="music-title">${responseData[0].name}</p>
-      <p class="music-duration">${responseData[0].duration_ms}</p>
+      <p class="music-duration">${convertToHumanTime(responseData[0].duration_ms)}</p>
     </div>
   `; 
   
