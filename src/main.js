@@ -1,9 +1,10 @@
 import SpotifyWrapper from 'spotfy-wrapper';
 import renderList from '../src/album-list';
 import renderAlbumInfo from '../src/album-info';
+import renderAlbumTracks from '../src/album-tracks';
 
 const spotifyWrapper = new SpotifyWrapper({
-  token: 'BQA3E863goBQ08Npcehm4zNLo6yFsJZl43hZ1nz7YDectoQ9-w2wcq0N5VLLvrnA-do1Sa1gBKZPy_iFC_STW3oYhF6An1y_bjtEdWsKtu3H78xI3ow5p9QW4R_glbixyWGFPWRglivYnG0',
+  token: 'BQBn6DDqNhUsDzHTaiFQDxVzS98UIV2oPPOA_wG3Evq4ABbwcUIALDZ1DJAeJbBRldgWSi1pomjGXiFOkARQvDBlJmMm3ls-9mTZQWu_yfS85BK2_ztM9j5S7N2zxBUqcw3Pjd1vHHWJ1ms',
 });
 
 const albums = spotifyWrapper.search.albums('Strokes');
@@ -12,4 +13,8 @@ albums.then(data => renderList(albumList, data.albums.items));
 
 const album = spotifyWrapper.album.getAlbum('4aawyAB9vmqN3uQ7FjRGTy');
 const albumInfo = document.getElementById('album-info');
-album.then(data => renderAlbumInfo(albumInfo, data));
+const tracksList = document.getElementById('album-tracks');
+album
+  .then(data => renderAlbumInfo(albumInfo, data))
+  .then(data => renderAlbumTracks(tracksList, data.tracks.items));
+

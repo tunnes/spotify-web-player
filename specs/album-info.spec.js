@@ -6,7 +6,7 @@
   import renderAlbumInfo from '../src/album-info';
 
   describe("Album Info", () => {
-    const reponseData = {
+    const responseData = {
       "album_type" : "album",
       "artists" : [ {
         "name" : "Incubus",
@@ -33,10 +33,10 @@
     };
 
     const markup = `
-      <img class="album-image" src="${reponseData.images[0].url}" alt="${reponseData.name}">
-      <p class="album-title">${reponseData.name}</p>
-      <p class="album-artist">${reponseData.artists[0].name}</p>
-      <p class="album-counter">${reponseData.tracks.total} Músicas</p>
+      <img class="album-image" src="${responseData.images[0].url}" alt="${responseData.name}">
+      <p class="album-title">${responseData.name}</p>
+      <p class="album-artist">${responseData.artists[0].name}</p>
+      <p class="album-counter">${responseData.tracks.total} Músicas</p>
     `;
 
     it("Should `renderAlbumInfo` is an function", () => {
@@ -45,7 +45,13 @@
 
     it("Should create and append the markup when given the correct data", () => {
       const element = document.createElement('div');
-      renderAlbumInfo(element, reponseData);
+      renderAlbumInfo(element, responseData);
       expect(element.innerHTML).to.be.eql(markup);
+    });
+
+    it("Should `renderAlbumInfo` return data", () => {
+      let element = document.createElement('div');
+      let functionReturns = renderAlbumInfo(element, responseData);
+      expect(functionReturns).to.be.eql(responseData);
     });
 });
