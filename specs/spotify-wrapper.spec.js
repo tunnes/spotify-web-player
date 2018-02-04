@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import { expect } from 'chai';
-import spotifyWrapper from '../src/spotify';
+import spotifyWrapper from '../src/spotfy-wrapper';
 
 describe("Spotify Wrapper", () => {
   it("Should `spotifyWrapper` is an object", () => {

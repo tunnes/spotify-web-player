@@ -53,7 +53,7 @@ describe('Album List', () => {
     }    
   ];
   const markup = `
-    <div class="list-item">
+    <div class="list-item" data-album-id="${responseData[0].id}">
       <img src="${responseData[0].images[2].url}" alt="${responseData[0].name}" class="list-image">
       <div class="list-description">
         <p class="list-title">${responseData[0].name}</p>
